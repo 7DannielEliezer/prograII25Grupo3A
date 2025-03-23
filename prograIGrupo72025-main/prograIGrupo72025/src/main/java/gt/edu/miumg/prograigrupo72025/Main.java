@@ -1,9 +1,15 @@
 package gt.edu.miumg.prograigrupo72025;
-
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
+import java.util.InputMismatchException;
+
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
         Zoo zoo = new Zoo();
 
@@ -29,7 +35,7 @@ public class Main {
         }
     }
 
-    public static void menuZoo(Scanner scanner, Zoo zoo) {
+    public static void menuZoo(Scanner scanner, Zoo zoo)throws IOException {
         while (true) {
             System.out.println("\n--- Gestión del Zoo ---");
             System.out.println("1. Agregar nuevo animal");
@@ -62,11 +68,47 @@ public class Main {
     
     //prueba
     
-    public static void agregarAnimal(Scanner scanner, Zoo zoo) {
+public static void agregarAnimal(Scanner scanner, Zoo zoo)throws IOException {
+    
+        
         System.out.println("Ingrese nombre, edad y consumo diario del animal:");
-        String nombre = scanner.next();
+        
+        File archivo = new File("/Users/DELL/Downloads/Animals.csv"); //RUTA DE ARCHIVO
+        FileWriter fw = new FileWriter(archivo, true);  //COMANDO DE ESCRITURA
+        try(BufferedWriter bw = new BufferedWriter(fw)){
+
+        String cadena = null;   //PRIMERO ESTA VACÍO
+        String nombre = scanner.next(); //USUARIO ESCRIBE VARIABLE
+        cadena = nombre;
+        bw.write(cadena + ",");  //SE GUARDA EN CSV AUTOMATICAMENTE
+        
+        int cadenab;
         int edad = scanner.nextInt();
+        cadenab = edad;
+        bw.write(cadenab + ",");
+        
+        double cadenac;
         double consumo = scanner.nextDouble();
-        zoo.agregarAnimal(new Mamifero(nombre, edad, consumo));
-    }
-}
+        cadenac = consumo;
+        bw.write(cadenac + ",");
+        
+        
+        zoo.agregarAnimal(new Mamifero(nombre, edad, consumo)); //SE GUARDAN LOS DATOS DE HERENCIA
+        
+        
+        bw.newLine();
+        bw.close(); // SE CIERRA LA FILA DE CSV.
+        
+        }
+        catch(InputMismatchException e){
+        System.out.println("Hubo un ERROR");
+                }
+        catch(Exception e){
+        System.out.println("Hubo un ERROR");
+                } finally{
+        }
+        }
+        }
+        
+
+
