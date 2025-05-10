@@ -4,11 +4,13 @@ public abstract class Animal {
     protected String nombre;
     protected int edad;
     protected double consumoDiario; // Libras de alimento por día
+    protected int idanimal;
 
-    public Animal(String nombre, int edad, double consumoDiario) {
+    public Animal(String nombre, int edad, double consumoDiario, int idanimal) {
         this.nombre = nombre;
         this.edad = edad;
         this.consumoDiario = consumoDiario;
+        this.idanimal = idanimal;
     }
 
     public abstract void hacerSonido();
@@ -28,3 +30,7 @@ public abstract class Animal {
     public String getNombre() { return nombre; }
     public double getConsumoDiario() { return consumoDiario; }
 }
+
+
+
+

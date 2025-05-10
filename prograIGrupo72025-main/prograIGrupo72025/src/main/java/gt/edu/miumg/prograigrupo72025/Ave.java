@@ -1,8 +1,8 @@
 package gt.edu.miumg.prograigrupo72025;
 
 public class Ave extends Animal {
-    public Ave(String nombre, int edad, double consumoDiario) {
-        super(nombre, edad, consumoDiario);
+    public Ave(String nombre, int edad, double consumoDiario, int idanimal) {
+        super(nombre, edad, consumoDiario, idanimal);
     }
 
     @Override
