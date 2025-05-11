@@ -19,7 +19,7 @@ public class Main {
         while (true) {
             System.out.println("\n--- Menú Principal ---");
             System.out.println("1. Zoo");
-            System.out.println("2. Fase II (Próximamente)");
+            System.out.println("2. Fase II");
             System.out.println("3. Fase III (Próximamente)");
             System.out.println("4. Salir");
             System.out.print("Seleccione una opción: ");
