@@ -174,6 +174,7 @@ public static void Fase2(){
     public static void agregarmamifero() {
         Scanner sc = new Scanner(System.in);
         while (count < array.length) {
+                         try {
             Nombre idanimal = new Nombre();
             System.out.println("\n-- Registro de Mamífero --");
             System.out.print("Ingrese un nombre: ");
@@ -198,7 +199,14 @@ public static void Fase2(){
             idanimal.setID(id);
             array[count] = idanimal;//LO PONE EN UN ARRAY Y EL COUNT ES EL NUMERO
             count++;
-
+        } catch (NumberFormatException e) {
+            System.out.println("Error!");
+            continue;
+        }//ESTE ES EL CATCH
+            
+            
+            
+            
             System.out.print("¿Desea agregar otro mamífero? (s/n): ");
             String respuesta = sc.nextLine();//ACA PREGUNTA SI DESEA CONTINUAR
             if (!respuesta.equalsIgnoreCase("s")) {//VERIFICA SI PONE SI O NO
