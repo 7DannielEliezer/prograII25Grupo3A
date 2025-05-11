@@ -10,33 +10,6 @@ import java.util.Arrays;
 import java.util.InputMismatchException;
 
 
-class ID {
-    public int id;
-
-    public void setID(int id) {
-        this.id = id;
-    }
-
-    public int getID() {
-        return id;
-    }
-}
-
-class Nombre extends ID {
-    public String nombre;
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-}
-
-
-
 public class Main {
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
@@ -155,11 +128,12 @@ public static void Fase2(){
             System.out.println("d. Agregar Reptil");
             System.out.println("e. Ordenar arreglo ascendente");
             System.out.println("f. Ordenar arreglo descendente");
+            System.out.println("g. Mostrar arreglo");
             System.out.println("s. Volver al Menú");
             System.out.print("Seleccione una opción: ");
             opcion = entrada.next().charAt(0);
-            entrada.nextLine(); 
-
+            entrada.nextLine(); //
+            
             switch (opcion) {
                 case 'a':
                 case 'A':
@@ -180,15 +154,15 @@ public static void Fase2(){
                 case 'f':
                 case 'F':
                     ordenaras();
-                    break;
+                    break;//SÍ
                 case 'g':
                 case 'G':
                     mostrararreglo();
-                    break;
+                    break;//E
                 case 's':
                 case 'S':
                     System.out.println("Saliendo...");
-                    break;
+                    break;//ESTO SALE AL MENU INCIAL
                 default:
                     System.out.println("Opción no válida T.T");
             }
@@ -196,12 +170,11 @@ public static void Fase2(){
 }
 
 
-
-        public static void agregarmamifero(){
-        if (count < array.length) {
+//ESTO AGREGA UN ANIMAL
+    public static void agregarmamifero() {
+        Scanner sc = new Scanner(System.in);
+        while (count < array.length) {
             Nombre idanimal = new Nombre();
-            Scanner sc = new Scanner(System.in);
-
             System.out.println("\n-- Registro de Mamífero --");
             System.out.print("Ingrese un nombre: ");
             String nombre = sc.nextLine();
@@ -214,35 +187,45 @@ public static void Fase2(){
                 id = Integer.parseInt(sc.nextLine());
                 idRepetido = false;
                 for (int i = 0; i < count; i++) {
-                    if (array[i].getID() == id) {
+                    if (array[i].getID() == id) {//AQUI COMPRUEBA SI ESTA REPETIDO
                         System.out.println("Este ID ya está en uso. Intente con otro.");
                         idRepetido = true;
                         break;
                     }
                 }
-            } while (idRepetido);
+            } while (idRepetido);//Y CONTINUA
 
             idanimal.setID(id);
-            array[count] = idanimal;
+            array[count] = idanimal;//LO PONE EN UN ARRAY Y EL COUNT ES EL NUMERO
             count++;
 
-            System.out.print("¿Desea agregar otro animal? (s/n): ");
-            String respuesta = sc.nextLine();
-            if (!respuesta.equalsIgnoreCase("s")) {
-                System.out.println("Registro de mamífero finalizado.");
+            System.out.print("¿Desea agregar otro mamífero? (s/n): ");
+            String respuesta = sc.nextLine();//ACA PREGUNTA SI DESEA CONTINUAR
+            if (!respuesta.equalsIgnoreCase("s")) {//VERIFICA SI PONE SI O NO
+                break;
             }
-        } else {
+        }
+        if (count == array.length) {
             System.out.println("No se pueden agregar más mamíferos. Arreglo lleno.");
-        }
-        }
+        }//AQUI AVISA SI YA ESTA LLENO
+    }
 
     public static void agregarave() {
-        System.out.println("\n-- Registro de Ave --");
-        if (count < array.length) {
+ 
+        Scanner sc = new Scanner(System.in);
+        
+        
+        
+        
+        
+        while (count < array.length) {//A PARTIR DE AQUÍ
+            
+             try {
+                 //ESTE ES EL TRY
+                 
+                 
             Nombre idanimal = new Nombre();
-            Scanner sc = new Scanner(System.in);
-
-            System.out.println("\n-- Registro de ave --");
+            System.out.println("\n-- Registro de Ave --");
             System.out.print("Ingrese un nombre: ");
             String nombre = sc.nextLine();
             idanimal.setNombre(nombre);
@@ -265,24 +248,43 @@ public static void Fase2(){
             idanimal.setID(id);
             array[count] = idanimal;
             count++;
-
-            System.out.print("¿Desea agregar otro animal? (s/n): ");
+            
+            //SE TIENE QUE COLOCAR ASI PARA QUE NO TRUENE
+            
+            
+        } catch (NumberFormatException e) {
+            System.out.println("Error!");
+            continue;
+        }//ESTE ES EL CATCH
+             
+             
+             
+             //
+             
+            System.out.print("¿Desea agregar otro ave? (s/n): ");
             String respuesta = sc.nextLine();
             if (!respuesta.equalsIgnoreCase("s")) {
-                System.out.println("Registro de ave finalizado.");
+                break;
             }
-        } else {
-            System.out.println("No se pueden agregar más mamíferos. Arreglo lleno.");
         }
-    
+             
+             
+             
+        if (count == array.length) {
+            System.out.println("No se pueden agregar más aves. Arreglo lleno.");
+        }
+        
+
     }
+//EL CUAL ES EL REPTIL Y EL MAMIFERO
+    
+    
     public static void agregarreptil() {
-        System.out.println("\n-- Registro de Reptil --");
-        if (count < array.length) {
+        Scanner sc = new Scanner(System.in);
+        while (count < array.length) {
+                         try {
             Nombre idanimal = new Nombre();
-            Scanner sc = new Scanner(System.in);
-
-            System.out.println("\n-- Registro de reptil --");
+            System.out.println("\n-- Registro de Reptil --");
             System.out.print("Ingrese un nombre: ");
             String nombre = sc.nextLine();
             idanimal.setNombre(nombre);
@@ -306,62 +308,82 @@ public static void Fase2(){
             array[count] = idanimal;
             count++;
 
-            System.out.print("¿Desea agregar otro animal? (s/n): ");
+                    } catch (NumberFormatException e) {
+            System.out.println("Error!");
+            continue;
+        }
+            
+            
+            
+            System.out.print("¿Desea agregar otro reptil? (s/n): ");
             String respuesta = sc.nextLine();
             if (!respuesta.equalsIgnoreCase("s")) {
-                System.out.println("Registro de reptil finalizado.");
+                break;
             }
-        } else {
-            System.out.println("No se pueden agregar más mamíferos. Arreglo lleno.");
         }
-    
+        if (count == array.length) {
+            System.out.println("No se pueden agregar más reptiles. Arreglo lleno.");
+        }
     }
-    
-    public static void ordenardes() {
-        System.out.println("  Ordenar arreglo ");
-
-    }
+//ESTO LO ORDENA 
     public static void ordenaras() {
         System.out.println("  Ordenar arreglo ");
-          System.out.println("  Ordenar arreglo ");
  System.out.println("Arreglo desordenado: " + Arrays.toString(array));
         ordenamientoSeleccion(array, count);
         System.out.println("Arreglo ordenado: " + Arrays.toString(array));
     }
 
-    // Ordenamiento por selección para ordenar por ID
+    public static void ordenardes() {
+        System.out.println("  Ordenar arreglo ");
+ System.out.println("Arreglo desordenado: " + Arrays.toString(array));
+        ordenamientoSeleccionDescendente(array, count);
+        System.out.println("Arreglo ordenado: " + Arrays.toString(array));
+    }
+
+    // Ordenamiento por selección para ordenar de forma ascendente por ID
     public static void ordenamientoSeleccion(Nombre[] array, int count){
         for (int i = 0; i < count - 1; i++) {
             int maspeque = i;
             for (int j = i + 1; j < count; j++) {
                 if (array[j].getID() < array[maspeque].getID()) {
-                    maspeque = j;
+                    maspeque = j;//ESTO ES LO QUE VIMOS EN CLASE
+                    //EL PROFESOR NO QUIERE EL ARRAY.SORT()
                 }
             }
             intercambiar(array, i, maspeque);
         }
     }
 
-    // Método para intercambiar dos elementos en el arreglo
-    private static void intercambiar(Nombre[] array, int primero, int segundo) {
-        Nombre temporal = array[primero];
-        array[primero] = array[segundo];
-        array[segundo] = temporal;
+    // Ordenamiento por selección para ordenar de forma descendente por ID
+    public static void ordenamientoSeleccionDescendente(Nombre[] array, int count){
+        for (int i = 0; i < count - 1; i++) {
+            int masgrande = i;
+            for (int j = i + 1; j < count; j++) {
+                if (array[j].getID() > array[masgrande].getID()) {
+                    masgrande = j;
+                }
+            }
+            intercambiar(array, i, masgrande);
+        }
+    }
+
+    public static void intercambiar(Nombre[] array, int i, int j){
+        Nombre temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
     }
 
     public static void mostrararreglo() {
-        System.out.println("-- Mostrar arreglo actual --");
-        if (count == 0) {
-            System.out.println("No hay datos ingresados.");
-        } else {
-            for (int i = 0; i < count; i++) {
-                System.out.println(array[i]);
-            }
+        System.out.println("Arreglo actual:");
+        for (int i = 0; i < count; i++) {
+            System.out.println("ID: " + array[i].getID() + ", Nombre: " + array[i].getNombre());
         }
+    }
+}
  
         
-}
-}
+
+
 
 
          
